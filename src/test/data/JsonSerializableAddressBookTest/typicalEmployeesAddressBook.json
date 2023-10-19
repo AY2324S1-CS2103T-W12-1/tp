@@ -1,5 +1,5 @@
 {
-  "_comment": "AddressBook save file which contains the same Employee values as in TypicalEmployees#getTypicalAddressBook()",
+  "_comment": "HouR save file which contains the same Employee values as in TypicalEmployees#getTypicalAddressBook()",
   "employees": [
     {
       "name": "Alice Pauline",
