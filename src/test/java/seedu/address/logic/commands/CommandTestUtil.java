@@ -20,6 +20,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.employee.Employee;
+import seedu.address.model.employee.Leave;
 import seedu.address.model.employee.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EditEmployeeDescriptorBuilder;
 
@@ -46,8 +47,8 @@ public class CommandTestUtil {
     public static final int VALID_OVERTIME_HOURS_BOB = 70;
     public static final boolean VALID_IS_ON_LEAVE_AMY = false;
     public static final boolean VALID_IS_ON_LEAVE_BOB = true;;
-    public static final ArrayList VALID_LEAVELIST_AMY = new ArrayList<>();
-    public static final ArrayList VALID_LEAVELIST_BOB = new ArrayList<>();
+    public static final ArrayList VALID_LEAVELIST_AMY = new ArrayList<Leave>();
+    public static final ArrayList VALID_LEAVELIST_BOB = new ArrayList<Leave>();
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String POSITION_DESC_AMY = " " + PREFIX_POSITION + VALID_POSITION_AMY;

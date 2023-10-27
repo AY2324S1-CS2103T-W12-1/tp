@@ -108,9 +108,8 @@ public class LeaveList {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (!leaveList.isEmpty()) {
-            sb.append("Leaves taken:\n");
             for (int i = 0; i < leaveList.size(); i++) {
-                sb.append(i + 1).append(".").append(leaveList.get(i));
+                sb.append(i + 1).append(". ").append(leaveList.get(i));
                 sb.append("\n");
             }
         } else {

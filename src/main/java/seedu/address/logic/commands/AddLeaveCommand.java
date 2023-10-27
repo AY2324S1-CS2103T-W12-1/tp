@@ -35,13 +35,14 @@ public class AddLeaveCommand extends Command {
             + PREFIX_FROM + "START DATE "
             + PREFIX_TO + "END DATE\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_ID + "EID2023-6789 "
+            + PREFIX_ID + "EID1234-5678 "
             + PREFIX_FROM + "26-12-2023 "
             + PREFIX_TO + "28-12-2023";
 
     public static final String MESSAGE_SUCCESS = "New leave period added: %1$s";
     public static final String MISSING_DATE = "No date given! "
             + "Leaves must have date in dd-MM-yyyy format.";
+    public static final String MESSAGE_INVALID_DATE_ORDER = "START DATE should not be after END DATE!";
     public static final String MESSAGE_DUPLICATE_LEAVE = "This leave period overlaps with an existing leave";
     public static final String MESSAGE_NOT_ENOUGH_LEAVES = "This leave period exceeds the number of leaves remaining";
     private final Id targetId;
@@ -75,7 +76,7 @@ public class AddLeaveCommand extends Command {
 
                 model.setEmployee(employee, employeeWithLeave);
                 model.updateFilteredEmployeeList(PREDICATE_SHOW_ALL_EMPLOYEES);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(employeeWithLeave)));
+                return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.formatLeaves(employeeWithLeave)));
             }
         }
         throw new CommandException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
