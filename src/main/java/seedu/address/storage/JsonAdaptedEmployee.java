@@ -38,7 +38,7 @@ class JsonAdaptedEmployee {
     private final String salary;
     private final boolean isOnLeave;
     private final int overtimeHours;
-    private final ArrayList<Leave> leaveList;
+    private final ArrayList<JsonAdaptedLeave> leaveList = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedEmployee} with the given employee details.
@@ -48,7 +48,7 @@ class JsonAdaptedEmployee {
             @JsonProperty("id") String id, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("departments") List<JsonAdaptedDepartment> departments,
             @JsonProperty("salary") String salary, @JsonProperty("isOnLeave") boolean isOnLeave,
-            @JsonProperty("overtime") int overtimeHours, @JsonProperty("leaves") ArrayList<Leave> leaveList) {
+            @JsonProperty("overtime") int overtimeHours, @JsonProperty("leaves") ArrayList<JsonAdaptedLeave> leaveList) {
         this.name = name;
         this.position = position;
         this.id = id;
@@ -60,7 +60,9 @@ class JsonAdaptedEmployee {
         }
         this.isOnLeave = isOnLeave;
         this.overtimeHours = overtimeHours;
-        this.leaveList = leaveList;
+        if (leaveList != null) {
+            this.leaveList.addAll(leaveList);
+        }
     }
 
     /**
@@ -78,7 +80,9 @@ class JsonAdaptedEmployee {
                 .collect(Collectors.toList()));
         isOnLeave = source.getIsOnLeave();
         overtimeHours = source.getOvertimeHours().value;
-        leaveList = source.getLeaveList().leaveList;
+        leaveList.addAll(source.getLeaveList().leaveList.stream()
+                .map(JsonAdaptedLeave::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -149,14 +153,11 @@ class JsonAdaptedEmployee {
         }
         final OvertimeHours modelOvertimeHours = new OvertimeHours(overtimeHours);
 
-        if (leaveList == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    LeaveList.class.getSimpleName()));
+        final ArrayList<Leave> employeeLeaves = new ArrayList<>();
+        for (JsonAdaptedLeave leave : leaveList) {
+            employeeLeaves.add(leave.toModelType());
         }
-        if (!LeaveList.isValidLeaveList(leaveList)) {
-            throw new IllegalValueException(Leave.MESSAGE_CONSTRAINTS);
-        }
-        final LeaveList modelLeaveList = new LeaveList(leaveList);
+        final LeaveList modelLeaveList = new LeaveList(employeeLeaves);
 
         return new Employee(modelName, modelPosition, modelId, modelPhone,
                 modelEmail, modelSalary, modelDepartments, isOnLeave, modelOvertimeHours, modelLeaveList);
