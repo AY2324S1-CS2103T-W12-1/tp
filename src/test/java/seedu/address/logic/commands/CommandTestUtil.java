@@ -43,8 +43,8 @@ public class CommandTestUtil {
     public static final String VALID_DEPARTMENT_IT = "IT";
     public static final String VALID_SALARY_AMY = "7000";
     public static final String VALID_SALARY_BOB = "5000";
-    public static final int VALID_OVERTIME_HOURS_AMY = 72;
-    public static final int VALID_OVERTIME_HOURS_BOB = 70;
+    public static final int VALID_OVERTIME_HOURS_AMY = 0;
+    public static final int VALID_OVERTIME_HOURS_BOB = 1;
     public static final boolean VALID_IS_ON_LEAVE_AMY = false;
     public static final boolean VALID_IS_ON_LEAVE_BOB = true;
     public static final ArrayList<Leave> VALID_LEAVELIST_AMY = new ArrayList<>();

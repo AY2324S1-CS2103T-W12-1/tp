@@ -1,6 +1,23 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEPARTMENT_FINANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEPARTMENT_IT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LEAVELIST_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LEAVELIST_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_OVERTIME_HOURS_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_OVERTIME_HOURS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_BOB;
 import static seedu.address.model.employee.Employee.DEFAULT_LEAVELIST;
 import static seedu.address.model.employee.Employee.DEFAULT_OVERTIME_HOURS;
 

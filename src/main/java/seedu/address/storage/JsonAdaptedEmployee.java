@@ -89,11 +89,6 @@ class JsonAdaptedEmployee {
      *                               the adapted employee.
      */
     public Employee toModelType() throws IllegalValueException {
-        final List<Department> employeeDepartments = new ArrayList<>();
-        for (JsonAdaptedDepartment department : departments) {
-            employeeDepartments.add(department.toModelType());
-        }
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -143,6 +138,12 @@ class JsonAdaptedEmployee {
         }
         final Salary modelSalary = new Salary(salary);
 
+        final List<Department> employeeDepartments = new ArrayList<>();
+        for (JsonAdaptedDepartment department : departments) {
+            employeeDepartments.add(department.toModelType());
+        }
+        final Set<Department> modelDepartments = new HashSet<>(employeeDepartments);
+
         if (!OvertimeHours.isValidOvertimeHours(overtimeHours)) {
             throw new IllegalValueException(OvertimeHours.MESSAGE_CONSTRAINTS);
         }
@@ -156,8 +157,6 @@ class JsonAdaptedEmployee {
             throw new IllegalValueException(Leave.MESSAGE_CONSTRAINTS);
         }
         final LeaveList modelLeaveList = new LeaveList(leaveList);
-
-        final Set<Department> modelDepartments = new HashSet<>(employeeDepartments);
 
         return new Employee(modelName, modelPosition, modelId, modelPhone,
                 modelEmail, modelSalary, modelDepartments, isOnLeave, modelOvertimeHours, modelLeaveList);

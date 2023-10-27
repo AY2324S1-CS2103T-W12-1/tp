@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.employee.Email;
 import seedu.address.model.employee.Id;
+import seedu.address.model.employee.Leave;
 import seedu.address.model.employee.LeaveList;
 import seedu.address.model.employee.Name;
 import seedu.address.model.employee.OvertimeHours;
@@ -43,7 +44,7 @@ public class JsonAdaptedEmployeeTest {
     private static final boolean VALID_IS_ON_LEAVE = BENSON.getIsOnLeave();
     private static final String VALID_SALARY = BENSON.getSalary().value;
     private static final int VALID_OVERTIME_HOURS = BENSON.getOvertimeHours().value;
-    private static final ArrayList VALID_LEAVELIST = BENSON.getLeaveList().leaveList;
+    private static final ArrayList<Leave> VALID_LEAVELIST = BENSON.getLeaveList().leaveList;
 
     @Test
     public void toModelType_validEmployeeDetails_returnsEmployee() throws Exception {

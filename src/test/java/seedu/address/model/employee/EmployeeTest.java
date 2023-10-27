@@ -95,10 +95,10 @@ public class EmployeeTest {
 
         // different isOnLeave -> returns false
         editedAlice = new EmployeeBuilder(ALICE).withIsOnLeave(VALID_IS_ON_LEAVE_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
 
         // different overtime hours left -> returns false
         editedAlice = new EmployeeBuilder(ALICE).withOvertimeHours(VALID_OVERTIME_HOURS_BOB).build();
-
         assertFalse(ALICE.equals(editedAlice));
     }
 
