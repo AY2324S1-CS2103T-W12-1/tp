@@ -5,8 +5,11 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 
+/**
+ * Represents an employee's leave in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidLeaveDate(String)}
+ */
 public class Leave {
 
     public static final String MESSAGE_CONSTRAINTS = "Leave dates have to be of format dd-MM-yyyy!"

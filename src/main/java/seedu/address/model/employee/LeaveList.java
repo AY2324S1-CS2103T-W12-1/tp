@@ -5,6 +5,10 @@ import static seedu.address.model.employee.Employee.MAX_NUM_OF_LEAVES;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Represents a list of leaves taken by an employee.
+ * Guarantees: immutable; is valid as declared in {@link #isValidLeaveList(ArrayList)}
+ */
 public class LeaveList {
 
     public final ArrayList<Leave> leaveList;

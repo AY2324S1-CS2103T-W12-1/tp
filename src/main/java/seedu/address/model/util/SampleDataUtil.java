@@ -3,7 +3,6 @@ package seedu.address.model.util;
 import static seedu.address.model.employee.Employee.DEFAULT_OVERTIME_HOURS;
 import static seedu.address.model.employee.Employee.MAX_OVERTIME_HOURS;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -14,7 +13,6 @@ import seedu.address.model.department.Department;
 import seedu.address.model.employee.Email;
 import seedu.address.model.employee.Employee;
 import seedu.address.model.employee.Id;
-import seedu.address.model.employee.Leave;
 import seedu.address.model.employee.LeaveList;
 import seedu.address.model.employee.Name;
 import seedu.address.model.employee.OvertimeHours;

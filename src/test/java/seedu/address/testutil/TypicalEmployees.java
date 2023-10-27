@@ -1,21 +1,7 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DEPARTMENT_FINANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DEPARTMENT_IT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_LEAVELIST_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_LEAVELIST_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_SALARY_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.model.employee.Employee.DEFAULT_LEAVELIST;
 import static seedu.address.model.employee.Employee.DEFAULT_OVERTIME_HOURS;
 
 import java.util.ArrayList;
@@ -24,7 +10,6 @@ import java.util.List;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.employee.Employee;
-import seedu.address.model.employee.Leave;
 
 /**
  * A utility class containing a list of {@code Employee} objects to be used in tests.
@@ -39,7 +24,7 @@ public class TypicalEmployees {
                 .withDepartments("Finance")
                 .withSalary("12000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>()).build();
+                .withLeaveList(DEFAULT_LEAVELIST).build();
     public static final Employee BENSON = new EmployeeBuilder().withName("Benson Meier")
                 .withPosition("Assistant Manager")
                 .withId("EID5678-1234")
@@ -48,7 +33,7 @@ public class TypicalEmployees {
                 .withDepartments("IT", "Operations")
                 .withSalary("6000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>()).build();
+                .withLeaveList(DEFAULT_LEAVELIST).build();
     public static final Employee CARL = new EmployeeBuilder().withName("Carl Kurz")
                 .withPosition("Software Engineer")
                 .withId("EID1234-8765")
@@ -56,7 +41,7 @@ public class TypicalEmployees {
                 .withEmail("heinz@example.com")
                 .withSalary("5800")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>()).build();
+                .withLeaveList(DEFAULT_LEAVELIST).build();
     public static final Employee DANIEL = new EmployeeBuilder().withName("Daniel Meier")
                 .withPosition("Tester")
                 .withId("EID4321-5678")
@@ -65,7 +50,7 @@ public class TypicalEmployees {
                 .withDepartments("IT")
                 .withSalary("5000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>()).build();
+                .withLeaveList(DEFAULT_LEAVELIST).build();
     public static final Employee ELLE = new EmployeeBuilder().withName("Elle Meyer")
                 .withPosition("Junior Software Engineer")
                 .withId("EID2023-1234")
@@ -73,7 +58,7 @@ public class TypicalEmployees {
                 .withEmail("werner@example.com")
                 .withSalary("4000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>()).build();
+                .withLeaveList(DEFAULT_LEAVELIST).build();
     public static final Employee FIONA = new EmployeeBuilder().withName("Fiona Kunz")
                 .withPosition("Senior Software Engineer")
                 .withId("EID2023-5678")
@@ -81,7 +66,7 @@ public class TypicalEmployees {
                 .withEmail("lydia@example.com")
                 .withSalary("8000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>()).build();
+                .withLeaveList(DEFAULT_LEAVELIST).build();
     public static final Employee GEORGE = new EmployeeBuilder().withName("George Best")
                 .withPosition("Intern")
                 .withId("EID2023-9876")
@@ -89,7 +74,7 @@ public class TypicalEmployees {
                 .withEmail("anna@example.com")
                 .withSalary("1000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>()).build();
+                .withLeaveList(DEFAULT_LEAVELIST).build();
 
     // Manually added
     public static final Employee HOON = new EmployeeBuilder().withName("Hoon Meier")
@@ -99,7 +84,7 @@ public class TypicalEmployees {
                 .withEmail("stefan@example.com")
                 .withSalary("1000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>())
+                .withLeaveList(DEFAULT_LEAVELIST)
                 .build();
     public static final Employee IDA = new EmployeeBuilder().withName("Ida Mueller")
                 .withPosition("CEO")
@@ -108,7 +93,7 @@ public class TypicalEmployees {
                 .withEmail("hans@example.com")
                 .withSalary("10000")
                 .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
-                .withLeaveList(new ArrayList<>())
+                .withLeaveList(DEFAULT_LEAVELIST)
                 .build();
 
     // Manually added - Employee's details found in {@code CommandTestUtil}
@@ -119,7 +104,7 @@ public class TypicalEmployees {
                 .withEmail(VALID_EMAIL_AMY)
                 .withDepartments(VALID_DEPARTMENT_FINANCE)
                 .withSalary(VALID_SALARY_AMY)
-                .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
+                .withOvertimeHours(VALID_OVERTIME_HOURS_AMY)
                 .withLeaveList(VALID_LEAVELIST_AMY)
                 .build();
     public static final Employee BOB = new EmployeeBuilder().withName(VALID_NAME_BOB)
@@ -129,7 +114,7 @@ public class TypicalEmployees {
                 .withEmail(VALID_EMAIL_BOB)
                 .withDepartments(VALID_DEPARTMENT_FINANCE, VALID_DEPARTMENT_IT)
                 .withSalary(VALID_SALARY_BOB)
-                .withOvertimeHours(DEFAULT_OVERTIME_HOURS)
+                .withOvertimeHours(VALID_OVERTIME_HOURS_BOB)
                 .withLeaveList(VALID_LEAVELIST_BOB)
                 .build();
 

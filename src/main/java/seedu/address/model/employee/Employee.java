@@ -2,10 +2,7 @@ package seedu.address.model.employee;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.department.Department;
@@ -19,6 +16,7 @@ public class Employee {
     // Global employee details
     public static final int MAX_OVERTIME_HOURS = 72;
     public static final int DEFAULT_OVERTIME_HOURS = 0;
+    public static final ArrayList<Leave> DEFAULT_LEAVELIST = new ArrayList<>();
     public static final boolean DEFAULT_IS_ON_LEAVE = false;
     public static final int MAX_NUM_OF_LEAVES = 14;
 
@@ -51,7 +49,7 @@ public class Employee {
         this.departments.addAll(departments);
         this.isOnLeave = DEFAULT_IS_ON_LEAVE;
         this.overtimeHours = new OvertimeHours(DEFAULT_OVERTIME_HOURS);
-        this.leaveList = new LeaveList();
+        this.leaveList = new LeaveList(DEFAULT_LEAVELIST);
     }
 
     /**

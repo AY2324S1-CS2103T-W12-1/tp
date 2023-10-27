@@ -238,6 +238,40 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Sorting
+
+#### Proposed Implementation
+
+The proposed sorting mechanism is facilitated by `UniqueEmployeeList`. It implements the following operations:
+
+* `UniqueEmployeeList#sortEmployees(String attribute)` — sorts the internal list according to the attribute given.
+
+These operations are exposed in the `Model` interface as `Model#updateSortedEmployeeList(String attribute)`,  and in `AddressBook `class as `AddressBook#sortEmployees(String attribute)`
+
+Given below is an example usage scenario where the user attempts to sort the list by salary.
+
+The user keys in `sort by/ salary`
+
+the `sort` command will call `Model#updateSortedEmployeeList()`, which in turn calls `AddressBook#sortEmployees()`
+which then calls `UniqueEmployeeList#sortEmployees()`.
+
+This will call the `List#sort()` method of the observable list `internalList`, which contains the full list of employees.
+
+Finally, the update to the internalList will change the view of the displayed list in the GUI.
+
+#### Design considerations:
+
+**Aspect: How sort executes:**
+
+* **Alternative 1 (current choice):** Sorts the internal list directly
+    * Pros: Easy to implement.
+    * Cons: Disable the ability to list by order of employee added.
+
+* **Alternative 2:** Performs a sort on a copied list in `ModelManager`.
+    * Pros: Allows the `list` command to list all employees by the order they were added.
+    * Cons: Different lists in the `ModelManager` class may cause inconsistencies when `find` and `sort` commands are called consecutively.
+
+_{more aspects and alternatives to be added}_
 
 --------------------------------------------------------------------------------------------------------------------
 
