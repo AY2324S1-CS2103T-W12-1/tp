@@ -153,6 +153,9 @@ class JsonAdaptedEmployee {
         }
         final OvertimeHours modelOvertimeHours = new OvertimeHours(overtimeHours);
 
+        if (leaveList == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, LeaveList.class.getSimpleName()));
+        }
         final ArrayList<Leave> employeeLeaves = new ArrayList<>();
         for (JsonAdaptedLeave leave : leaveList) {
             employeeLeaves.add(leave.toModelType());

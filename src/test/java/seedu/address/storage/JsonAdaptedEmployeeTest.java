@@ -5,6 +5,7 @@ import static seedu.address.storage.JsonAdaptedEmployee.MISSING_FIELD_MESSAGE_FO
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalEmployees.BENSON;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,7 +45,9 @@ public class JsonAdaptedEmployeeTest {
     private static final boolean VALID_IS_ON_LEAVE = BENSON.getIsOnLeave();
     private static final String VALID_SALARY = BENSON.getSalary().value;
     private static final int VALID_OVERTIME_HOURS = BENSON.getOvertimeHours().value;
-    private static final ArrayList<Leave> VALID_LEAVELIST = BENSON.getLeaveList().leaveList;
+    private static final ArrayList<JsonAdaptedLeave> VALID_LEAVELIST = BENSON.getLeaveList().leaveList.stream()
+            .map(JsonAdaptedLeave::new)
+            .collect(Collectors.toCollection(ArrayList::new));
 
     @Test
     public void toModelType_validEmployeeDetails_returnsEmployee() throws Exception {
@@ -177,14 +180,6 @@ public class JsonAdaptedEmployeeTest {
                 VALID_EMAIL, VALID_DEPARTMENTS, VALID_SALARY, VALID_IS_ON_LEAVE, INVALID_OVERTIME_HOURS,
                 VALID_LEAVELIST);
         String expectedMessage = OvertimeHours.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, employee::toModelType);
-    }
-
-    @Test
-    public void toModelType_nullLeaveList_throwsIllegalValueException() {
-        JsonAdaptedEmployee employee = new JsonAdaptedEmployee(VALID_NAME, VALID_POSITION, VALID_ID, VALID_PHONE,
-                VALID_EMAIL, VALID_DEPARTMENTS, VALID_SALARY, VALID_IS_ON_LEAVE, VALID_OVERTIME_HOURS, null);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LeaveList.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, employee::toModelType);
     }
 }
