@@ -55,19 +55,19 @@ public class OvertimeCommand extends Command {
         List<Employee> lastShownList = model.getFilteredEmployeeList();
         Employee employeeToUpdate = lastShownList.stream().filter(employee -> employee.getId().equals(targetId))
                 .findFirst().orElse(null);
-
-        if (employeeToUpdate != null) {
-            Employee updatedEmployee = updateEmployeeOvertime(employeeToUpdate);
-            model.setEmployee(employeeToUpdate, updatedEmployee);
-            if (isIncrement) {
-                return new CommandResult(String.format(MESSAGE_OVERTIME_INCREASE_SUCCESS,
-                        Messages.formatOvertimeHours(updatedEmployee), changeInOvertimeHours));
-            } else {
-                return new CommandResult(String.format(MESSAGE_OVERTIME_DECREASE_SUCCESS,
-                        Messages.formatOvertimeHours(updatedEmployee), changeInOvertimeHours));
-            }
+        if (employeeToUpdate == null) {
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_EMPLOYEE_DISPLAYED_ID, targetId));
         }
-        throw new CommandException(Messages.MESSAGE_INVALID_COMMAND_FORMAT);
+
+        Employee updatedEmployee = updateEmployeeOvertime(employeeToUpdate);
+        model.setEmployee(employeeToUpdate, updatedEmployee);
+        if (isIncrement) {
+            return new CommandResult(String.format(MESSAGE_OVERTIME_INCREASE_SUCCESS,
+                    Messages.formatOvertimeHours(updatedEmployee), changeInOvertimeHours));
+        } else {
+            return new CommandResult(String.format(MESSAGE_OVERTIME_DECREASE_SUCCESS,
+                    Messages.formatOvertimeHours(updatedEmployee), changeInOvertimeHours));
+        }
     }
 
     private Employee updateEmployeeOvertime(Employee employeeToEdit) throws CommandException {
